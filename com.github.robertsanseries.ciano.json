@@ -20,6 +20,15 @@
         "--filesystem=~/.config/dconf:ro",
         "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
     ],
+    "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/vala",
+        "/share/gir-1.0",
+        "/share/gtk-doc",
+        "/lib/girepository-1.0",
+        "/lib/*.la"
+    ],
     "modules": [
         {
             "name": "libgee",
@@ -71,6 +80,21 @@
             ]
         },
         {
+            "name": "elementary-theme",
+            "buildsystem": "simple",
+            "build-commands": [
+                "install -dm755 /app/share/themes/elementary/gtk-3.0",
+                "cp -aL gtk-3.22/* /app/share/themes/elementary/gtk-3.0",
+                "cp -a index.theme /app/share/themes/elementary"
+            ],
+            "sources": [{
+                "type": "git",
+                "url": "git://github.com/elementary/stylesheet.git",
+                "branch": "5.1.1",
+                "commit": "6a96d0f3227f15533c11e136b101ee44052eb750"
+            }]
+        },
+        {
           "name": "imagemagick",
           "config-opts": [
             "--enable-static=no",
@@ -104,8 +128,8 @@
           "sources": [
             {
               "type": "archive",
-              "url": "http://mirror.checkdomain.de/imagemagick/ImageMagick-7.0.7-21.tar.xz",
-              "sha256": "3b2783a845279f76a4250f2c3caf04af22766e2d5f084bde589ebd73de6a0019"
+              "url": "http://mirror.checkdomain.de/imagemagick/releases/ImageMagick-7.0.7-32.tar.xz",
+              "sha256": "6267b33cfba2caae0e72e91548f2e0a3030861acb337d39e5344a0d8dd991152"
             }
           ]
         },
