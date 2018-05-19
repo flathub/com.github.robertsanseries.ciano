@@ -1,0 +1,8 @@
+--- a/src/Main.vala
++++ b/src/Main.vala
+@@ -26,5 +26,6 @@
+  */
+ public static void main (string [] args) {
+ 	var app = new Ciano.Application ();
++  Gtk.Settings.get_default().set_property("gtk-theme-name", "elementary");
+ 	app.run (args);
