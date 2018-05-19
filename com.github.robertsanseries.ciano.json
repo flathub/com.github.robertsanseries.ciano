@@ -128,17 +128,17 @@
           "sources": [
             {
               "type": "archive",
-              "url": "http://mirror.checkdomain.de/imagemagick/releases/ImageMagick-7.0.7-32.tar.xz",
-              "sha256": "6267b33cfba2caae0e72e91548f2e0a3030861acb337d39e5344a0d8dd991152"
+              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.7-31.tar.gz",
+              "sha256": "2208eb6b9355fda4279ed1861523830aec1f9b0a39bf8c20718d1c8f5ad42710"
             }
           ]
         },
         {
             "name": "ffmpeg",
-            "cleanup": [ 
-                "/include", 
-                "/lib/pkgconfig", 
-                "/share/ffmpeg/examples" 
+            "cleanup": [
+                "/include",
+                "/lib/pkgconfig",
+                "/share/ffmpeg/examples"
             ],
             "config-opts": [
                 "--enable-shared",
@@ -169,6 +169,10 @@
                    "type":"archive",
                    "url":"https://github.com/robertsanseries/ciano/archive/0.1.9.zip",
                    "sha256":"b4c1e58d80fe1894f2341b693b0d84a686ced2853040312bbfef3ab31872b714"
+                },
+                {
+                  "type": "patch",
+                  "path": "elementary-theme.patch"
                 }
             ]
         }
