@@ -4,14 +4,8 @@
     "runtime-version": "1.6",
     "sdk": "org.freedesktop.Sdk",
     "command": "com.github.robertsanseries.ciano",
-    "base": "io.elementary.Loki.BaseApp",
-    "base-version": "stable",
-    "build-options": {
-        "env": {
-            "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_GIRDIR": "/app/share/gir-1.0",
-            "PKG_CONFIG_GOBJECT_INTROSPECTION_1_0_TYPELIBDIR": "/app/lib/girepository-1.0"
-        }
-    },
+    "base": "io.elementary.BaseApp",
+    "base-version": "juno",
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
@@ -66,8 +60,8 @@
           "sources": [
             {
               "type": "archive",
-              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.7-39.tar.gz",
-              "sha256": "e7c1b19923bb97ed456c78b63b3259b809ebc8e3967c6d086450370c67eedf06"
+              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.8-15.tar.gz",
+              "sha256": "a3ebb64b82d042cd2290d171c16f482a74ff5f86c51237da5dfcb75753fccfb4"
             }
           ]
         },
@@ -81,7 +75,6 @@
             "config-opts": [
                 "--enable-shared",
                 "--disable-static",
-                "--disable-ffserver",
                 "--disable-ffplay",
                 "--disable-ffprobe",
                 "--disable-doc",
@@ -90,8 +83,8 @@
             "sources": [
                 {
                   "type": "archive",
-                  "url": "https://www.ffmpeg.org/releases/ffmpeg-3.4.1.tar.xz",
-                  "sha256": "5a77278a63741efa74e26bf197b9bb09ac6381b9757391b922407210f0f991c0"
+                  "url": "https://ffmpeg.org/releases/ffmpeg-4.0.2.tar.xz",
+                  "sha256": "a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97"
                 }
             ],
             "post-install": [
@@ -108,8 +101,8 @@
             "sources": [
                 {
                    "type":"archive",
-                   "url":"https://github.com/robertsanseries/ciano/archive/0.1.9.zip",
-                   "sha256":"b4c1e58d80fe1894f2341b693b0d84a686ced2853040312bbfef3ab31872b714"
+                   "url":"https://github.com/robertsanseries/ciano/archive/0.2.1.tar.gz",
+                   "sha256":"77de0db16298bd961b7495da1fccf76ffff3ca3612a872b809597b6974184b04"
                 },
                 {
                   "type": "patch",
