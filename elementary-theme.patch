@@ -1,9 +1,10 @@
 --- a/src/Application.vala
 +++ b/src/Application.vala
-@@ -55,6 +55,7 @@ namespace Ciano {
+@@ -55,6 +55,8 @@ namespace Ciano {
              if (window == null) {
                  window = new Window (this);
 +                Gtk.Settings.get_default().set_property("gtk-theme-name", "elementary");
++                Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
                  add_window (window);
                  window.show_all ();
              }

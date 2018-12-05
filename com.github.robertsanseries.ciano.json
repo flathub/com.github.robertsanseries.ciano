@@ -60,8 +60,8 @@
           "sources": [
             {
               "type": "archive",
-              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.8-13.tar.gz",
-              "sha256": "1019e14efce520fa5287c955cf7c3a989dbba37545498677679d24d10a965795"
+              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.8-15.tar.gz",
+              "sha256": "a3ebb64b82d042cd2290d171c16f482a74ff5f86c51237da5dfcb75753fccfb4"
             }
           ]
         },
@@ -75,7 +75,6 @@
             "config-opts": [
                 "--enable-shared",
                 "--disable-static",
-                "--disable-ffserver",
                 "--disable-ffplay",
                 "--disable-ffprobe",
                 "--disable-doc",
@@ -84,8 +83,8 @@
             "sources": [
                 {
                   "type": "archive",
-                  "url": "https://www.ffmpeg.org/releases/ffmpeg-4.0.tar.gz",
-                  "sha256": "dc4b1c622baa34fc68d763cd2818e419d1af90271e0506604905f25a46ea8273"
+                  "url": "https://ffmpeg.org/releases/ffmpeg-4.0.2.tar.xz",
+                  "sha256": "a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97"
                 }
             ]
         },
@@ -99,8 +98,8 @@
             "sources": [
                 {
                    "type":"archive",
-                   "url":"https://github.com/robertsanseries/ciano/archive/0.1.9.zip",
-                   "sha256":"b4c1e58d80fe1894f2341b693b0d84a686ced2853040312bbfef3ab31872b714"
+                   "url":"https://github.com/robertsanseries/ciano/archive/0.2.1.tar.gz",
+                   "sha256":"77de0db16298bd961b7495da1fccf76ffff3ca3612a872b809597b6974184b04"
                 },
                 {
                   "type": "patch",
