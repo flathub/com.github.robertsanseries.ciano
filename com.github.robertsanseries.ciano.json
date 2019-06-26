@@ -60,8 +60,8 @@
           "sources": [
             {
               "type": "archive",
-              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.8-15.tar.gz",
-              "sha256": "a3ebb64b82d042cd2290d171c16f482a74ff5f86c51237da5dfcb75753fccfb4"
+              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.8-50.tar.gz",
+              "sha256": "fffeae12ea1a727b206f428c4d25c1ee7580f9b19e707ffa36e3a643b99f3f9e"
             }
           ]
         },
@@ -107,6 +107,10 @@
                 {
                   "type": "patch",
                   "path": "elementary-theme.patch"
+                },
+                {
+                  "type": "patch",
+                  "path": "oars.patch"
                 }
             ]
         }
