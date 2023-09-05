@@ -11,6 +11,7 @@
         "--socket=x11",
         "--socket=wayland",
         "--filesystem=home",
+        "--device=dri",
         "--metadata=X-DConf=migrate-path=/com/github/robertsanseries/ciano/"
     ],
     "cleanup": [
