@@ -1,16 +1,17 @@
 {
     "app-id": "com.github.robertsanseries.ciano",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "20.08",
+    "runtime-version": "22.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "com.github.robertsanseries.ciano",
     "base": "io.elementary.BaseApp",
-    "base-version": "juno-20.08",
+    "base-version": "juno-22.08",
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
         "--filesystem=home",
+        "--device=dri",
         "--metadata=X-DConf=migrate-path=/com/github/robertsanseries/ciano/"
     ],
     "cleanup": [
@@ -57,8 +58,8 @@
           "sources": [
             {
               "type": "archive",
-              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.11-6.tar.gz",
-              "sha256": "8adc1605784653b078572b825e8cd1d3d54f8a1b4ba86b32ca253c038f7e4c37"
+              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.1.1-15.tar.gz",
+              "sha256": "2372192a76af9be43c0543dd7ae6dfbf34b11fc0203583453ce3f9f707c36bcc"
             }
           ]
         },
@@ -94,8 +95,8 @@
             "sources": [
                 {
                   "type": "archive",
-                  "url": "https://ffmpeg.org/releases/ffmpeg-4.4.tar.xz",
-                  "sha256": "06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909"
+                  "url": "https://ffmpeg.org/releases/ffmpeg-4.4.4.tar.xz",
+                  "sha256": "e80b380d595c809060f66f96a5d849511ef4a76a26b76eacf5778b94c3570309"
                 }
             ]
         },
