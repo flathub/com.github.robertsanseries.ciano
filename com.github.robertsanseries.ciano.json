@@ -116,6 +116,10 @@
                {
                   "type": "patch",
                   "path": "elementary-theme.patch"
+               },
+               {
+                  "type": "patch",
+                  "path": "fix-appdata.patch"
                 }
             ]
         }
