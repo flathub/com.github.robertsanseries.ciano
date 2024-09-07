@@ -1,14 +1,14 @@
 {
     "app-id": "com.github.robertsanseries.ciano",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "20.08",
+    "runtime-version": "23.08",
     "sdk": "org.freedesktop.Sdk",
     "command": "com.github.robertsanseries.ciano",
     "base": "io.elementary.BaseApp",
-    "base-version": "juno-20.08",
+    "base-version": "juno-23.08",
     "finish-args": [
         "--share=ipc",
-        "--socket=x11",
+        "--socket=fallback-x11",
         "--socket=wayland",
         "--filesystem=home",
         "--metadata=X-DConf=migrate-path=/com/github/robertsanseries/ciano/"
