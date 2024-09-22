@@ -1,0 +1,21 @@
+--- a/data/com.github.robertsanseries.ciano.appdata.xml.in	2024-09-22 12:11:32.084588814 -0500
++++ b/data/com.github.robertsanseries.ciano.appdata.xml.in	2024-09-22 13:02:26.187697577 -0500
+@@ -11,6 +11,7 @@
+     <provides>
+         <binary>com.github.robertsanseries.ciano</binary>
+     </provides>
++    <translation type="gettext">ciano</translation>
+     <screenshots>
+         <screenshot type="default">
+             <image>https://raw.githubusercontent.com/robertsanseries/ciano/master/data/screenshot.png</image>
+@@ -132,6 +133,10 @@
+             </description>
+         </release>
+     </releases>
++    <categories>
++        <category>Utility</category>
++        <category>AudioVideo</category>
++    </categories>
+     <content_rating type="oars-1.1">
+         <content_attribute id="violence-cartoon">none</content_attribute>
+         <content_attribute id="violence-fantasy">none</content_attribute>
