@@ -170,8 +170,10 @@
             ],
             "sources": [
                 {
-                    "type":"dir",
-                    "path":"ciano"
+                  "type":"git",
+                   "url":"https://github.com/robertsanseries/ciano.git",
+                   "tag":"0.2.4",
+                   "commit": "e7dd4bd4f9eaff4e6a247fc8ced7f358cde6da63"
                 },
                 {
                     "type": "patch",
