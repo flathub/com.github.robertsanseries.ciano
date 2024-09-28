@@ -21,7 +21,8 @@
         "/share/gir-1.0",
         "/share/gtk-doc",
         "/lib/girepository-1.0",
-        "/lib/*.la"
+        "/lib/*.la",
+        "/lib/*.a"
     ],
     "modules": [
         {
