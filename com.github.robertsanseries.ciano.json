@@ -12,7 +12,6 @@
         "--socket=wayland",
         "--filesystem=home",
         "--device=dri",
-        "--env=GTK_THEME=/app/share/themes",
         "--metadata=X-DConf=migrate-path=/com/github/robertsanseries/ciano/"
     ],
     "cleanup": [
@@ -169,10 +168,10 @@
 
             ],
             "sources": [
-                {
-                  "type":"git",
-                   "url":"https://github.com/robertsanseries/ciano.git",
-                   "tag":"0.2.4",
+               {
+                  "type": "git",
+                   "url": "https://github.com/robertsanseries/ciano.git",
+                   "tag": "0.2.4",
                    "commit": "e7dd4bd4f9eaff4e6a247fc8ced7f358cde6da63"
                 },
                 {
