@@ -1,10 +1,30 @@
---- a/src/Application.vala
-+++ b/src/Application.vala
-@@ -55,6 +55,8 @@ namespace Ciano {
+--- a/src/Application.vala	2020-07-12 08:45:41.000000000 -0500
++++ b/src/Application.vala	2024-09-27 21:21:04.262892475 -0500
+@@ -19,6 +19,7 @@
+ */
+ 
+ using Ciano.Configs;
++using Gtk;
+ 
+ namespace Ciano {
+ 
+@@ -54,6 +55,18 @@
+         public override void activate () {
              if (window == null) {
                  window = new Window (this);
 +                Gtk.Settings.get_default().set_property("gtk-theme-name", "elementary");
 +                Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
++
++                var provider = new CssProvider () ;
++                provider.load_from_data( "decoration {\n"+"border-radius: 4px 4px 0 0;\n"+
++					"box-shadow:\n"+ "0 0 0 1px @decoration_border_color,\n" +
++					"0 1px 1px rgba(0, 0, 0, 0.35),\n"+"0 1px 1px rgba(0, 0, 0, 0.22);\n"+
++					"margin: 1px;\n"+"}"
++				);
++
++                var context = window.get_style_context();
++                context.add_provider(provider,Gtk.STYLE_PROVIDER_PRIORITY_USER);
                  add_window (window);
                  window.show_all ();
              }
+
