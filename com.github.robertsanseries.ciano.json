@@ -102,31 +102,6 @@
             }]
         },
         {
-            "name": "opus",
-            "buildsystem": "autotools",
-            "sources": [{
-                "type": "archive",
-                "url": "https://github.com/xiph/opus/releases/download/v1.5.2/opus-1.5.2.tar.gz",
-                "sha256": "65c1d2f78b9f2fb20082c38cbe47c951ad5839345876e46941612ee87f9a7ce1"
-            }]
-        },
-        {
-            "name": "libvpx",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--disable-examples",
-                "--disable-unit-tests",
-                "--enable-vp9-highbitdepth",
-                "--as=nasm"
-            ],
-            "sources": [{
-                "type": "git",
-                "url": "https://chromium.googlesource.com/webm/libvpx.git",
-                "tag": "v1.14.1",
-                "commit": "3688b17187d40a71f9a7de4bfac92201f3e4a533"
-            }]
-        },
-        {
             "name": "ffmpeg",
             "cleanup": [
                 "/include",
