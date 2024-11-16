@@ -56,21 +56,25 @@
             "--without-xml",
             "--without-zlib"
           ],
-          "sources": [{
-              "type": "git",
-              "url": "https://github.com/ImageMagick/ImageMagick.git",
-              "tag": "7.1.1-38",
-              "commit": "b0ab92265bab638e6ecd2f18b45977c38771c671"
-          }]
+          "sources": [
+              {
+                  "type": "git",
+                  "url": "https://github.com/ImageMagick/ImageMagick.git",
+                  "tag": "7.1.1-38",
+                  "commit": "b0ab92265bab638e6ecd2f18b45977c38771c671"
+              }
+          ]
         },
         {
             "name": "chrpath",
             "cleanup": ["*"],
-            "sources": [{
-                "type": "archive",
-                "url": "http://deb.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz",
-                "sha256": "bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b"
-            }]
+            "sources": [
+                {
+                  "type": "archive",
+                  "url": "http://deb.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz",
+                  "sha256": "bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b"
+                }
+            ]
         },
         {
             "name": "x264",
@@ -79,11 +83,13 @@
                 "--enable-static",
                 "--enable-pic"
             ],
-            "sources": [{
-                "type": "archive",
-                "url": "http://deb.debian.org/debian/pool/main/x/x264/x264_0.164.3108+git31e19f9.orig.tar.gz",
-                "sha256": "41606cb8e788a7f8c4514290646d4ba5c7bc68d9e1ccd1a73f446a90546913eb"
-            }]
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://deb.debian.org/debian/pool/main/x/x264/x264_0.164.3108+git31e19f9.orig.tar.gz",
+                    "sha256": "41606cb8e788a7f8c4514290646d4ba5c7bc68d9e1ccd1a73f446a90546913eb"
+                }
+            ]
         },
         {
             "name": "aac",
@@ -94,12 +100,14 @@
                 "make",
                 "make install"
             ],
-            "sources": [{
-                "type": "git",
-                "url": "https://github.com/mstorsjo/fdk-aac.git",
-                "tag": "v2.0.3",
-                "commit": "716f4394641d53f0d79c9ddac3fa93b03a49f278"
-            }]
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/mstorsjo/fdk-aac.git",
+                    "tag": "v2.0.3",
+                    "commit": "716f4394641d53f0d79c9ddac3fa93b03a49f278"
+                }
+            ]
         },
         {
             "name": "ffmpeg",
@@ -126,11 +134,13 @@
             "post-install": [
                 "chrpath -d /app/bin/ffmpeg"
             ],
-            "sources": [{
-                "type": "archive",
-                "url": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz",
-                "sha256": "8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389"
-            }]
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz",
+                    "sha256": "8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389"
+                }
+            ]
         },
         {
             "name": "ciano",
