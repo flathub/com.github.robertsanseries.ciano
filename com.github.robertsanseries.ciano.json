@@ -6,13 +6,28 @@
     "base": "io.elementary.BaseApp",
     "base-version": "circe-24.08",
     "command": "com.github.robertsanseries.ciano",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.vala"
+    ],
+    "build-options" : {
+        "prepend-path" : "/usr/lib/sdk/vala/bin/",
+        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
+    },
+    "add-extensions": {
+        "org.freedesktop.Sdk.Extension.vala": {
+            "version": "24.08",
+            "directory": "vala",
+            "autodelete": true
+        }
+    },
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
         "--filesystem=home",
         "--device=dri",
-        "--metadata=X-DConf=migrate-path=/com/github/robertsanseries/ciano/"
+        "--env=PATH=/usr/bin:/app/bin:/app/vala/bin",
+        "--env=LD_LIBRARY_PATH=/app/vala/lib:/app/lib"
     ],
     "cleanup": [
         "/include",
@@ -25,6 +40,11 @@
         "/lib/*.a"
     ],
     "modules": [
+        {
+            "name": "vala",
+            "buildsystem": "simple",
+            "build-commands": ["install -d /app/vala"]
+        },
         {
           "name": "imagemagick",
           "config-opts": [
