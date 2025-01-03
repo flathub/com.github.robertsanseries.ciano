@@ -62,7 +62,6 @@
             "name": "granite",
             "buildsystem": "meson",
             "config-options": ["--buildtype=release"],
-            "cleanup": ["*"],
             "sources": [{
                 "type": "archive",
                 "url": "https://github.com/elementary/granite/archive/refs/tags/6.2.0.tar.gz",
