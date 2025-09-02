@@ -39,7 +39,6 @@
             "build-options": {
                 "cflags" : "-Wno-error=incompatible-pointer-types"
             },
-            "cleanup": ["*"],
             "sources": [{
                 "type": "archive",
                 "url": "https://download.gnome.org/sources/libgee/0.20/libgee-0.20.6.tar.xz",
