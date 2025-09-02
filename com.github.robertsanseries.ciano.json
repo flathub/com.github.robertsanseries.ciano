@@ -13,13 +13,6 @@
         "prepend-path" : "/usr/lib/sdk/vala/bin/",
         "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
     },
-    "add-extensions": {
-        "org.freedesktop.Sdk.Extension.vala": {
-            "version": "24.08",
-            "directory": "vala",
-            "autodelete": true
-        }
-    },
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
@@ -40,11 +33,6 @@
         "/lib/*.a"
     ],
     "modules": [
-        {
-            "name": "vala",
-            "buildsystem": "simple",
-            "build-commands": ["install -d /app/vala"]
-        },
         {
             "name": "gee",
             "buildsystem": "autotools",
