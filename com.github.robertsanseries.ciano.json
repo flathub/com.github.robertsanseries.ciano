@@ -1,17 +1,33 @@
 {
     "app-id": "com.github.robertsanseries.ciano",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "20.08",
+    "runtime-version": "24.08",
     "sdk": "org.freedesktop.Sdk",
-    "command": "com.github.robertsanseries.ciano",
     "base": "io.elementary.BaseApp",
-    "base-version": "juno-20.08",
+    "base-version": "circe-24.08",
+    "command": "com.github.robertsanseries.ciano",
+    "sdk-extensions" : [
+        "org.freedesktop.Sdk.Extension.vala"
+    ],
+    "build-options" : {
+        "prepend-path" : "/usr/lib/sdk/vala/bin/",
+        "prepend-ld-library-path" : "/usr/lib/sdk/vala/lib"
+    },
+    "add-extensions": {
+        "org.freedesktop.Sdk.Extension.vala": {
+            "version": "24.08",
+            "directory": "vala",
+            "autodelete": true
+        }
+    },
     "finish-args": [
         "--share=ipc",
         "--socket=x11",
         "--socket=wayland",
         "--filesystem=home",
-        "--metadata=X-DConf=migrate-path=/com/github/robertsanseries/ciano/"
+        "--device=dri",
+        "--env=PATH=/usr/bin:/app/bin:/app/vala/bin",
+        "--env=LD_LIBRARY_PATH=/app/vala/lib:/app/lib"
     ],
     "cleanup": [
         "/include",
@@ -20,9 +36,38 @@
         "/share/gir-1.0",
         "/share/gtk-doc",
         "/lib/girepository-1.0",
-        "/lib/*.la"
+        "/lib/*.la",
+        "/lib/*.a"
     ],
     "modules": [
+        {
+            "name": "vala",
+            "buildsystem": "simple",
+            "build-commands": ["install -d /app/vala"]
+        },
+        {
+            "name": "gee",
+            "buildsystem": "autotools",
+            "build-options": {
+                "cflags" : "-Wno-error=incompatible-pointer-types"
+            },
+            "cleanup": ["*"],
+            "sources": [{
+                "type": "archive",
+                "url": "https://download.gnome.org/sources/libgee/0.20/libgee-0.20.6.tar.xz",
+                "sha256": "1bf834f5e10d60cc6124d74ed3c1dd38da646787fbf7872220b8b4068e476d4d"
+            }]
+        },        
+        {
+            "name": "granite",
+            "buildsystem": "meson",
+            "config-options": ["--buildtype=release"],
+            "sources": [{
+                "type": "archive",
+                "url": "https://github.com/elementary/granite/archive/refs/tags/6.2.0.tar.gz",
+                "sha256": "067d31445da9808a802fca523630c3e4b84d2d7c78ae547ced017cb7f3b9c6b5"
+            }]
+        },
         {
           "name": "imagemagick",
           "config-opts": [
@@ -55,11 +100,12 @@
             "--without-zlib"
           ],
           "sources": [
-            {
-              "type": "archive",
-              "url": "https://github.com/ImageMagick/ImageMagick/archive/7.0.11-6.tar.gz",
-              "sha256": "8adc1605784653b078572b825e8cd1d3d54f8a1b4ba86b32ca253c038f7e4c37"
-            }
+              {
+                  "type": "git",
+                  "url": "https://github.com/ImageMagick/ImageMagick.git",
+                  "tag": "7.1.1-38",
+                  "commit": "b0ab92265bab638e6ecd2f18b45977c38771c671"
+              }
           ]
         },
         {
@@ -74,6 +120,39 @@
             ]
         },
         {
+            "name": "x264",
+            "buildsystem": "autotools",
+            "config-opts": [
+                "--enable-static",
+                "--enable-pic"
+            ],
+            "sources": [
+                {
+                    "type": "archive",
+                    "url": "http://deb.debian.org/debian/pool/main/x/x264/x264_0.164.3108+git31e19f9.orig.tar.gz",
+                    "sha256": "41606cb8e788a7f8c4514290646d4ba5c7bc68d9e1ccd1a73f446a90546913eb"
+                }
+            ]
+        },
+        {
+            "name": "aac",
+            "buildsystem": "simple",
+            "build-commands": [
+                "autoreconf -fiv",
+                "./configure --prefix=/app --disable-shared",
+                "make",
+                "make install"
+            ],
+            "sources": [
+                {
+                    "type": "git",
+                    "url": "https://github.com/mstorsjo/fdk-aac.git",
+                    "tag": "v2.0.3",
+                    "commit": "716f4394641d53f0d79c9ddac3fa93b03a49f278"
+                }
+            ]
+        },
+        {
             "name": "ffmpeg",
             "cleanup": [
                 "/include",
@@ -81,8 +160,15 @@
                 "/share/ffmpeg/examples"
             ],
             "config-opts": [
-                "--enable-shared",
-                "--disable-static",
+                "--enable-gnutls",
+                "--enable-nonfree",
+                "--enable-static",
+                "--enable-libx264",
+                "--enable-gpl",
+                "--enable-libfdk-aac",
+                "--enable-libvorbis",
+                "--enable-libopus",
+                "--enable-libvpx",
                 "--disable-ffplay",
                 "--disable-ffprobe",
                 "--disable-doc",
@@ -93,9 +179,9 @@
             ],
             "sources": [
                 {
-                  "type": "archive",
-                  "url": "https://ffmpeg.org/releases/ffmpeg-4.4.tar.xz",
-                  "sha256": "06b10a183ce5371f915c6bb15b7b1fffbe046e8275099c96affc29e17645d909"
+                    "type": "archive",
+                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz",
+                    "sha256": "8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389"
                 }
             ]
         },
@@ -105,16 +191,25 @@
             "config-opts": [
               "--buildtype=release"
             ],
+            "post-install": [
+                "cp -u -r /app/share/icons/hicolor/24x24/* /app/share/icons/hicolor/scalable/",
+                "rm -r /app/share/icons/hicolor/[0-9]*"
+            ],
             "sources": [
                 {
-                   "type":"git",
-                   "url":"https://github.com/robertsanseries/ciano.git",
-                   "tag":"0.2.4",
+                   "type": "git",
+                   "url": "https://github.com/robertsanseries/ciano.git",
+                   "tag": "0.2.4",
                    "commit": "e7dd4bd4f9eaff4e6a247fc8ced7f358cde6da63"
-               },
-               {
-                  "type": "patch",
-                  "path": "elementary-theme.patch"
+                },
+                {
+                    "type": "patch",
+                    "paths": [
+                        "elementary-theme.patch",
+                        "0001-Use-standard-icon-names.patch",
+                        "com.github.robertsanseries.ciano.appdata.xml.in.patch",
+                        "ConverterController.vala.patch"
+                    ]
                 }
             ]
         }
