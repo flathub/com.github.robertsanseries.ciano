@@ -1,0 +1,122 @@
+--- a/src/Controllers/ConverterController.vala	2020-07-12 08:45:41.000000000 -0500
++++ b/src/Controllers/ConverterController.vala	2024-09-26 12:16:48.657352442 -0500
+@@ -140,14 +140,22 @@
+             if (chooser_file.run () == Gtk.ResponseType.OK) {
+ 
+                 SList<string> uris = chooser_file.get_filenames ();
+-
++				
+                 foreach (unowned string uri in uris)  {
+                     
+-                    var file         = File.new_for_uri (uri);
+-                    int index        = file.get_basename ().last_index_of("/");
+-                    string name      = file.get_basename ().substring(index + 1, -1);
+-                    string directory = file.get_basename ().substring(0, index + 1);
+-
++                    File *file;
++                    
++                    if(uri[0] == '/'){
++						file = File.new_for_path (uri);
++					} else {
++						file = File.new_for_uri (uri);
++					}
++					
++					
++                    string name      = file->get_basename ();
++                    int index        = file->get_path ().last_index_of("/");
++                    string directory = file->get_path ().substring(0, index + 1);
++                    
+                     list_store.append (out iter);
+                     list_store.set (iter, 0, name, 1, directory);
+                     tree_view.expand_all ();
+@@ -454,6 +462,40 @@
+ 
+             return icon;
+         }
++
++        private string[] get_key_value (string str_cc, string key){
++
++			string cont = "0";
++			string str_ = "";
++
++			if(str_cc.contains (key)){
++
++				cont = "1";
++
++				int index  = str_cc.index_of (key);
++				int len    = (int)str_cc.size();
++
++				index = index + (int)key.size();
++
++
++				string str_tmp = str_cc.substring (index, len - index);
++
++				int mark = len;
++				for(int i = 0; i < str_tmp.length; i++){
++
++					if(str_tmp[i] == ' '){ mark = i; }
++					if(str_tmp[i] == '='){ break; }
++				}
++
++
++				str_ = str_cc.substring (index, mark);
++
++				var regex = new Regex (" ");
++				str_ = regex.replace (str_, -1, 0, "");
++			}
++
++			return {cont, str_};
++		}
+         
+         /**
+          * Responsible for processing the returned row and validate the return and execution of actions accordingly.
+@@ -476,25 +518,36 @@
+             string bitrate  = StringUtil.EMPTY;
+ 
+             if (str_return.contains ("Duration:")) {
++
+                 int index       = str_return.index_of ("Duration:");
+                 string duration = str_return.substring (index + 10, 11);
+ 
+                 total = TimeUtil.duration_in_seconds (duration);
+             }
+ 
+-            if (str_return.contains ("time=") && str_return.contains ("size=") && str_return.contains ("bitrate=") ) {
+-                int index_time  = str_return.index_of ("time=");
+-                time            = str_return.substring ( index_time + 5, 11);
+-
+-                int loading     = TimeUtil.duration_in_seconds (time);
+-                double progress = (100 * loading) / total;
+-                row.progress_bar.set_fraction (progress / 100);
+-        
+-                int index_size  = str_return.index_of ("size=");
+-                size            = str_return.substring ( index_size + 5, 11);
+-            
+-                int index_bitrate = str_return.index_of ("bitrate=");
+-                bitrate           = str_return.substring ( index_bitrate + 8, 11);
++			string[] time_    = get_key_value (str_return, "time=");
++			string[] size_    = get_key_value (str_return, "size=");
++			string[] bitrate_ = get_key_value (str_return, "bitrate=");
++
++            if (time_[0] == "1" && size_[0] == "1" &&  bitrate_[0] == "1" ) {
++
++				var regex_time = new Regex ("^[0-9]{2}:[0-9]{2}:[0-9.]{2,4}");
++				double progress = 0;
++
++				if( regex_time.match(time_[1]) ){
++
++					int loading     = TimeUtil.duration_in_seconds (time_[1]);
++					progress = (100 * loading) / total;
++					row.progress_bar.set_fraction (progress / 100);
++
++				}else{
++
++					row.progress_bar.set_fraction (0);
++				}
++
++		 time       = time_[1];
++                size       = size_[1];
++                bitrate    = bitrate_[1];
+ 
+                 row.status.label = Properties.TEXT_PERCENTAGE + progress.to_string() + "%" + Properties.TEXT_SIZE_CUSTOM + size.strip () + Properties.TEXT_TIME_CUSTOM + time.strip () + Properties.TEXT_BITRATE_CUSTOM + bitrate.strip ();
+             }
