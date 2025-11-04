@@ -1,10 +1,10 @@
 {
     "app-id": "com.github.robertsanseries.ciano",
     "runtime": "org.freedesktop.Platform",
-    "runtime-version": "24.08",
+    "runtime-version": "25.08",
     "sdk": "org.freedesktop.Sdk",
     "base": "io.elementary.BaseApp",
-    "base-version": "circe-24.08",
+    "base-version": "circe-25.08",
     "command": "com.github.robertsanseries.ciano",
     "sdk-extensions" : [
         "org.freedesktop.Sdk.Extension.vala"
