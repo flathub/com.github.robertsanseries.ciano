@@ -179,10 +179,10 @@
                 {
                     "type": "patch",
                     "paths": [
-                        "elementary-theme.patch",
-                        "0001-Use-standard-icon-names.patch",
-                        "com.github.robertsanseries.ciano.appdata.xml.in.patch",
-                        "ConverterController.vala.patch"
+                        "patches/elementary-theme.patch",
+                        "patches/use-standard-icon-names.patch",
+                        "patches/fix_appdata.patch",
+                        "patches/ConverterController.vala.patch"
                     ]
                 }
             ]
