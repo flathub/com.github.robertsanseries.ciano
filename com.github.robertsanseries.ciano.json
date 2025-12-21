@@ -57,50 +57,6 @@
           ]
         },
         {
-            "name": "chrpath",
-            "cleanup": ["*"],
-            "sources": [
-                {
-                  "type": "archive",
-                  "url": "http://deb.debian.org/debian/pool/main/c/chrpath/chrpath_0.16.orig.tar.gz",
-                  "sha256": "bb0d4c54bac2990e1bdf8132f2c9477ae752859d523e141e72b3b11a12c26e7b"
-                }
-            ]
-        },
-        {
-            "name": "x264",
-            "buildsystem": "autotools",
-            "config-opts": [
-                "--enable-static",
-                "--enable-pic"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "http://deb.debian.org/debian/pool/main/x/x264/x264_0.164.3108+git31e19f9.orig.tar.gz",
-                    "sha256": "41606cb8e788a7f8c4514290646d4ba5c7bc68d9e1ccd1a73f446a90546913eb"
-                }
-            ]
-        },
-        {
-            "name": "aac",
-            "buildsystem": "simple",
-            "build-commands": [
-                "autoreconf -fiv",
-                "./configure --prefix=/app --disable-shared",
-                "make",
-                "make install"
-            ],
-            "sources": [
-                {
-                    "type": "git",
-                    "url": "https://github.com/mstorsjo/fdk-aac.git",
-                    "tag": "v2.0.3",
-                    "commit": "716f4394641d53f0d79c9ddac3fa93b03a49f278"
-                }
-            ]
-        },
-        {
             "name": "ciano",
             "buildsystem": "meson",
             "config-opts": [
