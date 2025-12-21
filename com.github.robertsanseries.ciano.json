@@ -173,15 +173,12 @@
                 {
                    "type": "git",
                    "url": "https://github.com/robertsanseries/ciano.git",
-                   "tag": "0.2.4",
-                   "commit": "e7dd4bd4f9eaff4e6a247fc8ced7f358cde6da63"
+                   "commit": "31ae62057660e327eaf5e358a31c2364b62addbf"
                 },
                 {
                     "type": "patch",
                     "paths": [
                         "patches/elementary-theme.patch",
-                        "patches/use-standard-icon-names.patch",
-                        "patches/fix_appdata.patch",
                         "patches/ConverterController.vala.patch"
                     ]
                 }
