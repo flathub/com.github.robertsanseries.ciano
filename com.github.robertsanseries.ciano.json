@@ -75,6 +75,7 @@
                 {
                     "type": "patch",
                     "paths": [
+                        "patches/fix_turkish_locale.patch",
                         "patches/elementary-theme.patch",
                         "patches/ConverterController.vala.patch"
                     ]
