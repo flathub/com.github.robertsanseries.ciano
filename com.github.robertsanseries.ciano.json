@@ -101,39 +101,6 @@
             ]
         },
         {
-            "name": "ffmpeg",
-            "cleanup": [
-                "/include",
-                "/lib/pkgconfig",
-                "/share/ffmpeg/examples"
-            ],
-            "config-opts": [
-                "--enable-gnutls",
-                "--enable-nonfree",
-                "--enable-static",
-                "--enable-libx264",
-                "--enable-gpl",
-                "--enable-libfdk-aac",
-                "--enable-libvorbis",
-                "--enable-libopus",
-                "--enable-libvpx",
-                "--disable-ffplay",
-                "--disable-ffprobe",
-                "--disable-doc",
-                "--disable-network"
-            ],
-            "post-install": [
-                "chrpath -d /app/bin/ffmpeg"
-            ],
-            "sources": [
-                {
-                    "type": "archive",
-                    "url": "https://ffmpeg.org/releases/ffmpeg-7.0.2.tar.xz",
-                    "sha256": "8646515b638a3ad303e23af6a3587734447cb8fc0a0c064ecdb8e95c4fd8b389"
-                }
-            ]
-        },
-        {
             "name": "ciano",
             "buildsystem": "meson",
             "config-opts": [
