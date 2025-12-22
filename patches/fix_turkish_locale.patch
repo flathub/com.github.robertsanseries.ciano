@@ -1,0 +1,42 @@
+From 7b114fcd502e9178c2c9edec0a264234f5f69679 Mon Sep 17 00:00:00 2001
+From: Sabri Ünal <yakushabb@gmail.com>
+Date: Mon, 22 Dec 2025 01:10:23 +0300
+Subject: [PATCH] Fix Turkish locale issue
+
+Fix the file extension 'AVI' becoming 'avı' instead of 'avi'
+---
+ src/Controllers/ConverterController.vala | 10 ++++++++--
+ 1 file changed, 8 insertions(+), 2 deletions(-)
+
+diff --git a/src/Controllers/ConverterController.vala b/src/Controllers/ConverterController.vala
+index 1bcc616..db48645 100644
+--- a/src/Controllers/ConverterController.vala
++++ b/src/Controllers/ConverterController.vala
+@@ -594,16 +594,22 @@ namespace Ciano.Controllers {
+         private string get_uri_new_file (string uri) {
+             string new_file;
+ 
++            // Define the file extension and convert to lowercase
++            string extension = this.name_format_selected.down ();
++
++            // Fix Turkish locale issue (e.g., 'AVI' becoming 'avı' instead of 'avi')
++            extension = extension . replace ("ı", "i");
++
+             if (this.settings.output_source_file_folder) {
+                 int index = uri.last_index_of(".");
+-                new_file = uri.substring(0, index + 1) + this.name_format_selected.down ();
++                new_file = uri.substring(0, index + 1) + extension;
+             } else {
+                 int index_start = uri.last_index_of("/");
+                 int index_end = uri.last_index_of(".");
+                 var file = uri.substring(index_start, index_start - index_end);
+ 
+                 int index = file.last_index_of(".");
+-                new_file = this.settings.output_folder + file.substring(0, index + 1) + this.name_format_selected.down ();
++                new_file = this.settings.output_folder + file.substring(0, index + 1) + extension;
+             }
+ 
+             return new_file;
+--
+libgit2 1.7.2
+
